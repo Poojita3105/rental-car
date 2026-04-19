@@ -1,67 +1,78 @@
-const FALLBACK = "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&q=80";
+import { Link } from "react-router-dom";
 
-const CarCard = ({ car, onClick }) => (
-  <div className="car-card" onClick={onClick}>
-    {car.badge && <div className="car-badge">{car.badge}</div>}
-
-    <div className="car-card-img-wrap">
-      <img
-        className="car-card-img"
-        src={car.img}
-        alt={car.name}
-        onError={(e) => { e.target.src = FALLBACK; }}
-      />
-    </div>
-
-    <div style={{ padding: "1.2rem" }}>
-      <h3
-        className="font-pirata"
-        style={{ fontSize: "1.28rem", color: "var(--seafoam)", letterSpacing: 1, marginBottom: 3 }}
-      >
-        {car.name}
-      </h3>
-      <p
-        className="font-krona"
-        style={{ fontSize: "0.52rem", letterSpacing: 2, color: "rgba(196,223,230,0.45)", marginBottom: "0.7rem" }}
-      >
-        {car.type.toUpperCase()} · {car.year}
-      </p>
-
-      {/* Specs */}
-      <div style={{ display: "flex", gap: "0.38rem", flexWrap: "wrap", marginBottom: "1rem" }}>
-        {[
-          `💺 ${car.seats}`,
-          `⛽ ${car.fuel}`,
-          `❄️ AC`,
-          `⚙️ ${car.transmission.slice(0, 4)}`,
-        ].map((s) => (
-          <span key={s} className="spec-chip" style={{ fontSize: "0.68rem", padding: "0.22rem 0.55rem" }}>
-            {s}
-          </span>
-        ))}
-      </div>
-
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <div>
-          <span
-            className="font-pirata"
-            style={{ fontSize: "1.38rem", color: "var(--gold)" }}
-          >
-            ₹{car.price.toLocaleString("en-IN")}
-          </span>
-          <span
-            className="font-krona"
-            style={{ fontSize: "0.52rem", color: "var(--seafoam)", marginLeft: 5 }}
-          >
-            /day
-          </span>
+export default function CarCard({ car, index = 0 }) {
+  return (
+    <div
+      className="group relative bg-gradient-to-b from-[#001f24] to-[#000d0f] rounded-2xl overflow-hidden border border-[#07575B]/30 hover:border-[#66A5AD]/60 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(0,59,70,0.6)]"
+      style={{ animationDelay: `${index * 80}ms` }}
+    >
+      {/* Badge */}
+      {car.badge && (
+        <div className="absolute top-3 left-3 z-10 px-2.5 py-1 rounded-full bg-[#07575B]/80 backdrop-blur-sm border border-[#66A5AD]/30 text-[10px] font-['Krona_One'] tracking-widest text-[#66A5AD] uppercase">
+          {car.badge}
         </div>
-        <button className="btn-ghost" style={{ padding: "0.38rem 0.9rem", fontSize: "0.52rem" }}>
-          View →
-        </button>
+      )}
+
+      {/* Price */}
+      <div className="absolute top-3 right-3 z-10 px-3 py-1.5 rounded-full bg-[#001f24]/90 backdrop-blur-sm border border-[#07575B]/50 text-xs font-['Krona_One'] text-white">
+        <span className="text-[#66A5AD]">${car.price}</span>
+        <span className="text-[#C4DFE6]/50">/day</span>
+      </div>
+
+      {/* Image */}
+      <div className="relative h-44 overflow-hidden bg-[#000d0f]">
+        <img
+          src={car.image}
+          alt={car.name}
+          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#001f24] via-transparent to-transparent" />
+        {/* Shine effect */}
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+      </div>
+
+      {/* Content */}
+      <div className="p-4">
+        <p className="text-[#66A5AD] text-[10px] font-['Krona_One'] tracking-[0.2em] uppercase mb-1">{car.category}</p>
+        <h3 className="text-white font-['Pirata_One'] text-xl leading-tight mb-3 group-hover:text-[#66A5AD] transition-colors duration-300">
+          {car.name}
+        </h3>
+
+        {/* Specs */}
+        <div className="grid grid-cols-3 gap-2 mb-4">
+          <SpecItem icon="👥" value={`${car.seats} Seats`} />
+          <SpecItem icon="⛽" value={car.fuel} />
+          <SpecItem icon="❄️" value={car.ac ? "AC" : "No AC"} />
+        </div>
+
+        {/* Rating */}
+        <div className="flex items-center gap-2 mb-4">
+          <div className="flex gap-0.5">
+            {Array.from({ length: 5 }).map((_, i) => (
+              <span key={i} className={`text-xs ${i < Math.floor(car.rating) ? "text-yellow-400" : "text-[#07575B]"}`}>★</span>
+            ))}
+          </div>
+          <span className="text-[#C4DFE6]/50 text-xs font-['Krona_One']">{car.rating} ({car.reviews})</span>
+        </div>
+
+        <Link
+          to={`/cars/${car.id}`}
+          className="block w-full text-center py-2.5 rounded-xl bg-gradient-to-r from-[#07575B] to-[#003B46] text-white text-xs font-['Krona_One'] tracking-widest border border-[#66A5AD]/20 hover:border-[#66A5AD]/60 transition-all duration-300 hover:shadow-[0_0_20px_rgba(7,87,91,0.5)] relative overflow-hidden group/btn"
+        >
+          <span className="relative z-10">View Details</span>
+          <div className="absolute inset-0 bg-gradient-to-r from-[#66A5AD] to-[#07575B] translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300" />
+        </Link>
       </div>
     </div>
-  </div>
-);
+  );
+}
 
-export default CarCard;
+function SpecItem({ icon, value }) {
+  return (
+    <div className="flex flex-col items-center gap-1 bg-[#07575B]/10 rounded-lg p-2 border border-[#07575B]/20">
+      <span className="text-sm">{icon}</span>
+      <span className="text-[#C4DFE6]/70 text-[10px] font-['Krona_One'] tracking-wide">{value}</span>
+    </div>
+  );
+}

@@ -1,63 +1,52 @@
-import { useState, useRef, useCallback } from "react";
-import "./index.css";
-
-import Splash   from "./components/Splash";
-import Navbar   from "./components/Navbar";
-import Toast    from "./components/Toast";
-
-import Home       from "./pages/Home";
-import Cars       from "./pages/Cars";
+import { useState } from "react";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Intro from "./components/Intro";
+import Home from "./pages/Home";
+import Cars from "./pages/Cars";
+import CarDetail from "./pages/CarDetail";
 import HowItWorks from "./pages/HowItWorks";
-import Deals      from "./pages/Deals";
-import Contact    from "./pages/Contact";
+import Deals from "./pages/Deals";
+import Contact from "./pages/Contact";
 
-const App = () => {
-  const [splashDone,  setSplashDone]  = useState(false);
-  const [page,        setPage]        = useState("Home");
-  const [bookedCar,   setBookedCar]   = useState(null);
-  const scrollRef = useRef(null);
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  // Scroll to top on navigation
+  useState(() => { window.scrollTo(0, 0); }, [pathname]);
+  return null;
+}
 
-  const handleSplashDone = useCallback(() => setSplashDone(true), []);
+function Layout() {
+  return (
+    <div className="min-h-screen flex flex-col bg-[#000d0f]">
+      <Navbar />
+      <main className="flex-1">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/cars" element={<Cars />} />
+          <Route path="/cars/:id" element={<CarDetail />} />
+          <Route path="/how-it-works" element={<HowItWorks />} />
+          <Route path="/deals" element={<Deals />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </main>
+      <Footer />
+    </div>
+  );
+}
 
-  const handleSetPage = useCallback((p) => {
-    setPage(p);
-    scrollRef.current?.scrollTo({ top: 0, behavior: "smooth" });
-  }, []);
-
-  const handleBook = useCallback((car) => {
-    setBookedCar(car);
-  }, []);
-
-  const handleToastClose = useCallback(() => setBookedCar(null), []);
+export default function App() {
+  const [introDone, setIntroDone] = useState(false);
 
   return (
     <>
-      {/* ── Splash ── */}
-      {!splashDone && <Splash onDone={handleSplashDone} />}
-
-      {/* ── Main app ── */}
-      <div
-        ref={scrollRef}
-        className="page-scroll"
-        style={{
-          opacity:    splashDone ? 1 : 0,
-          transition: "opacity 0.5s ease",
-          pointerEvents: splashDone ? "auto" : "none",
-        }}
-      >
-        <Navbar page={page} setPage={handleSetPage} />
-
-        {page === "Home"         && <Home        setPage={handleSetPage} onBook={handleBook} />}
-        {page === "Cars"         && <Cars        setPage={handleSetPage} onBook={handleBook} />}
-        {page === "How It Works" && <HowItWorks  setPage={handleSetPage} />}
-        {page === "Deals"        && <Deals       setPage={handleSetPage} />}
-        {page === "Contact"      && <Contact     setPage={handleSetPage} />}
+      {!introDone && <Intro onDone={() => setIntroDone(true)} />}
+      <div style={{ visibility: introDone ? "visible" : "hidden" }}>
+        <BrowserRouter>
+          <Layout />
+        </BrowserRouter>
       </div>
-
-      {/* ── Booking toast ── */}
-      {bookedCar && <Toast car={bookedCar} onClose={handleToastClose} />}
     </>
   );
-};
-
-export default App;
+}
