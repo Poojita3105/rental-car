@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -11,15 +11,19 @@ import Deals from "./pages/Deals";
 import Contact from "./pages/Contact";
 
 function ScrollToTop() {
-  const { pathname } = useLocation();
-  // Scroll to top on navigation
-  useState(() => { window.scrollTo(0, 0); }, [pathname]);
+  const { pathname, search } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, [pathname, search]);
+
   return null;
 }
 
 function Layout() {
   return (
     <div className="min-h-screen flex flex-col bg-[#000d0f]">
+      <ScrollToTop />
       <Navbar />
       <main className="flex-1">
         <Routes>

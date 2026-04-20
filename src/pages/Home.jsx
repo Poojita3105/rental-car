@@ -6,9 +6,9 @@ import { cars } from "../data/cars";
 
 const heroCarImages = [
   "https://images.unsplash.com/photo-1614200179396-2bdb77ebf81b?w=1400&q=80",
-  "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=1400&q=80",
+  "https://cdn-fastly.autoguide.com/media/2023/06/09/12752017/yellow-cars-top-10-best-and-brightest.jpg?size=720x845&nocrop=1?w=1400&q=80",
   "https://images.unsplash.com/photo-1563720223185-11003d516935?w=1400&q=80",
-  "https://images.unsplash.com/photo-1597007066704-67bf2068d5b2?w=1400&q=80",
+  "https://qz.com/cdn-cgi/image/width=1920,quality=85,format=auto/https://assets.qz.com/media/8829c0e55f0522cea7b589fec420db88.jpg",
 ];
 
 const stats = [
@@ -22,16 +22,23 @@ export default function Home() {
   const [heroIndex, setHeroIndex] = useState(0);
   const [visible, setVisible] = useState(false);
 
-  useEffect(() => {
-    setVisible(true);
-    const t = setInterval(() => setHeroIndex((i) => (i + 1) % heroCarImages.length), 4500);
-    return () => clearInterval(t);
-  }, []);
+ useEffect(() => {
+  const timer = setTimeout(() => setVisible(true), 200);
+
+  const t = setInterval(() => {
+    setHeroIndex((i) => (i + 1) % heroCarImages.length);
+  }, 4500);
+
+  return () => {
+    clearTimeout(timer);
+    clearInterval(t);
+  };
+}, []);
 
   const featured = cars.slice(0, 6);
 
   return (
-    <div className="min-h-screen bg-[#000d0f] overflow-x-hidden">
+    <div className="min-h-screen bg-[#04465ae8] overflow-x-hidden">
       {/* HERO */}
       <section className="relative h-screen flex items-center overflow-hidden">
         {/* BG images */}
@@ -41,19 +48,19 @@ export default function Home() {
             className="absolute inset-0 transition-opacity duration-1500"
             style={{ opacity: i === heroIndex ? 1 : 0, transitionDuration: "1500ms" }}
           >
-            <img src={src} alt="" className="w-full h-full object-cover scale-110" style={{ filter: "brightness(0.3) saturate(0.8)" }} />
+            <img src={src} alt="" className="w-full h-full object-cover scale-110" style={{ filter: "brightness(0.3) saturate(0.5)" }} />
           </div>
         ))}
         {/* Deep gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#000d0f] via-[#001f24]/70 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#000d0f] via-transparent to-[#000d0f]/40" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[] via-[#001f2482]/70 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#05242969] via-transparent to-[#000d0f]/40" />
         <Stars count={80} />
 
         {/* Animated cars parade at bottom */}
-        <div className="absolute bottom-20 left-0 right-0 overflow-hidden h-16 pointer-events-none">
+        <div className="absolute bottom-15 left-0 right-0 overflow-hidden h-16 pointer-events-none">
           <div className="flex gap-24 animate-[carParade_20s_linear_infinite]" style={{ width: "200%" }}>
             {[...cars.slice(0,8), ...cars.slice(0,8)].map((c, i) => (
-              <div key={i} className="flex-shrink-0 w-20 h-10 rounded-lg overflow-hidden border border-[#07575B]/30 opacity-50 hover:opacity-80 transition-opacity">
+              <div key={i} className="flex-shrink-0 w-20 h-10 rounded-lg overflow-hidden border border-[#07575B]/30 opacity-70 hover:opacity-80 transition-opacity">
                 <img src={c.image} alt="" className="w-full h-full object-cover" />
               </div>
             ))}
@@ -61,29 +68,67 @@ export default function Home() {
         </div>
 
         {/* Hero content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
+        <div className="relative z-10 max-w-7xl px-4 sm:px-6 lg:px-8 pt-1 text-left">
           <div
-            className="max-w-3xl transition-all duration-1000"
-            style={{ opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(40px)" }}
-          >
+  className="max-w-3xl transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)]"
+  style={{
+    opacity: visible ? 1 : 0,
+    transform: visible ? "translateY(0)" : "translateY(60px)",
+  }}
+>
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#07575B]/30 border border-[#66A5AD]/30 backdrop-blur-sm mb-6">
               <span className="w-2 h-2 rounded-full bg-[#66A5AD] animate-pulse" />
               <span className="font-['Krona_One'] text-[10px] tracking-[0.3em] text-[#66A5AD] uppercase">Premium Luxury Fleet Available</span>
             </div>
 
-            <h1 className="font-['Pirata_One'] text-6xl sm:text-7xl lg:text-8xl text-white leading-none mb-4">
+            <h3 className="font-['Pirata_One'] text-6xl sm:text-7xl lg:text-8xl text-white leading-none mb-4">
               Drive The{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#66A5AD] to-[#C4DFE6]">
                 Extraordinary
               </span>
-            </h1>
+            </h3>
             <p className="font-['Krona_One'] text-sm text-[#C4DFE6]/70 tracking-wide leading-relaxed max-w-xl mb-10">
               Experience the world's most coveted automobiles. From Lamborghinis to Bugattis — your dream drive awaits.
             </p>
 
-            {/* Search box */}
-            <div className="bg-[#001419]/90 backdrop-blur-xl border border-[#07575B]/50 rounded-2xl p-4 md:p-6 max-w-2xl shadow-[0_20px_60px_rgba(0,20,25,0.8)]">
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
+            
+          </div>
+        </div>
+
+        {/* Slide indicators */}
+        <div className="absolute bottom-36 right-8 flex flex-col gap-2">
+          {heroCarImages.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setHeroIndex(i)}
+              className={`rounded-full transition-all duration-300 ${i === heroIndex ? "w-2 h-8 bg-[#66A5AD]" : "w-2 h-2 bg-[#07575B]"}`}
+            />
+          ))}
+        </div>
+
+
+        
+      </section>
+
+      {/* STATS */}
+      <section className="relative py-16 bg-gradient-to-r from-[#001419] via-[#001f24] to-[#001419] border-y border-[#07575B]/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {stats.map((s, i) => (
+              <div key={i} className="text-center group">
+                <p className="font-['Pirata_One'] text-5xl text-transparent bg-clip-text bg-gradient-to-b from-[#C4DFE6] to-[#66A5AD] group-hover:from-white group-hover:to-[gold] transition-all duration-300">
+                  {s.value}
+                </p>
+                <p className="font-['Krona_One'] text-[10px] tracking-[0.3em] text-[#66A5AD]/70 uppercase mt-1">{s.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Search box */}
+            <div className="bg-[#001419]/90 backdrop-blur-xl border border-[#07575B]/50 rounded-2xl p-4 md:p-6 max-w-2xl mx-auto w-full mt-10 shadow-[0_20px_60px_rgba(0,20,25,0.8)] ">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4 ">
                 <SearchField icon="📍" label="Pickup Location" placeholder="Enter city..." />
                 <SearchField icon="📅" label="Start Date" placeholder="DD/MM/YYYY" type="date" />
                 <SearchField icon="📅" label="End Date" placeholder="DD/MM/YYYY" type="date" />
@@ -102,50 +147,20 @@ export default function Home() {
                 </Link>
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* Slide indicators */}
-        <div className="absolute bottom-36 right-8 flex flex-col gap-2">
-          {heroCarImages.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setHeroIndex(i)}
-              className={`rounded-full transition-all duration-300 ${i === heroIndex ? "w-2 h-8 bg-[#66A5AD]" : "w-2 h-2 bg-[#07575B]"}`}
-            />
-          ))}
-        </div>
-      </section>
-
-      {/* STATS */}
-      <section className="relative py-16 bg-gradient-to-r from-[#001419] via-[#001f24] to-[#001419] border-y border-[#07575B]/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((s, i) => (
-              <div key={i} className="text-center group">
-                <p className="font-['Pirata_One'] text-5xl text-transparent bg-clip-text bg-gradient-to-b from-[#C4DFE6] to-[#66A5AD] group-hover:from-white group-hover:to-[#C4DFE6] transition-all duration-300">
-                  {s.value}
-                </p>
-                <p className="font-['Krona_One'] text-[10px] tracking-[0.3em] text-[#66A5AD]/70 uppercase mt-1">{s.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* FEATURED FLEET */}
-      <section className="relative py-24 px-4 sm:px-6 lg:px-8">
+      <section className="relative py-10 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <p className="font-['Krona_One'] text-[10px] tracking-[0.4em] text-[#66A5AD] uppercase mb-3">Our Collection</p>
+            <p className="font-['Krona_One'] text-[10px] tracking-[0.4em] text-[#d6c361] uppercase mb-3">Our Collection</p>
             <h2 className="font-['Pirata_One'] text-5xl md:text-6xl text-white">Featured Fleet</h2>
             <div className="mt-4 flex items-center justify-center gap-3">
-              <div className="h-[1px] w-16 bg-gradient-to-r from-transparent to-[#66A5AD]" />
-              <span className="text-[#66A5AD]">✦</span>
-              <div className="h-[1px] w-16 bg-gradient-to-l from-transparent to-[#66A5AD]" />
+              <div className="h-[1px] w-16 bg-gradient-to-r from-transparent to-[gold]" />
+              <span className="text-[gold]">✦</span>
+              <div className="h-[1px] w-16 bg-gradient-to-l from-transparent to-[gold]" />
             </div>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
             {featured.map((car, i) => <CarCard key={car.id} car={car} index={i} />)}
           </div>
           <div className="text-center mt-12">
@@ -153,7 +168,7 @@ export default function Home() {
               to="/cars"
               className="inline-flex items-center gap-3 px-10 py-4 rounded-full font-['Krona_One'] text-xs tracking-widest text-white border border-[#66A5AD]/40 hover:bg-[#07575B]/30 hover:border-[#66A5AD] transition-all duration-300"
             >
-              View All 20 Cars →
+              View All Cars →
             </Link>
           </div>
         </div>
@@ -168,13 +183,29 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { icon: "👑", title: "Curated Luxury", desc: "Hand-picked selection of the world's most exclusive and performance-oriented vehicles." },
-              { icon: "🛡️", title: "Full Insurance", desc: "Every vehicle comes with comprehensive insurance coverage for your peace of mind." },
-              { icon: "🚀", title: "Instant Booking", desc: "Book in minutes. Flexible pickup and drop-off across 50+ premium locations worldwide." },
-            ].map((f, i) => (
+  {
+    img: "https://static.wixstatic.com/media/e555af_74312c3a972a479e9548cac8ff1c397f~mv2.jpg/v1/fill/w_640,h_520,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/e555af_74312c3a972a479e9548cac8ff1c397f~mv2.jpg",
+    title: "Curated Luxury",
+    desc: "Hand-picked selection of the world's most exclusive and performance-oriented vehicles."
+  },
+  {
+    img: "https://www.shutterstock.com/image-photo/hand-holding-miniature-car-protection-600nw-2760452767.jpg",
+    title: "Full Insurance",
+    desc: "Every vehicle comes with comprehensive insurance coverage for your peace of mind."
+  },
+  {
+    img: "https://www.saisevatravel.com/assets/images/rental-car.jpg",
+    title: "Instant Booking",
+    desc: "Book in minutes. Flexible pickup and drop-off across 50+ premium locations worldwide."
+  }
+]
+.map((f, i) => (
               <div key={i} className="group p-8 rounded-2xl bg-[#001f24]/50 border border-[#07575B]/30 hover:border-[#66A5AD]/50 hover:-translate-y-2 transition-all duration-500 text-center">
-                <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">{f.icon}</div>
-                <h3 className="font-['Pirata_One'] text-2xl text-white mb-3">{f.title}</h3>
+<img
+  src={f.img}
+  alt={f.title}
+  className="w-40 h-30 mx-auto mb-4 group-hover:scale-110 transition-transform duration-300"
+/>                <h3 className="font-['Pirata_One'] text-2xl text-white mb-3">{f.title}</h3>
                 <p className="text-[#C4DFE6]/60 text-sm font-['Krona_One'] tracking-wide leading-relaxed">{f.desc}</p>
               </div>
             ))}
@@ -186,14 +217,14 @@ export default function Home() {
       <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0">
           <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=1400&q=80" alt="" className="w-full h-full object-cover opacity-20" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#000d0f] via-[#001f24]/80 to-[#000d0f]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[] via-[#0d4c5680]/80 to-[]" />
         </div>
         <Stars count={40} />
         <div className="relative z-10 max-w-3xl mx-auto text-center px-4">
           <h2 className="font-['Pirata_One'] text-5xl md:text-6xl text-white mb-6">
             Ready to Drive <span className="text-[#66A5AD]">Royally</span>?
           </h2>
-          <p className="font-['Krona_One'] text-sm text-[#C4DFE6]/70 tracking-wide mb-10">
+          <p className="font-['Krona_One'] text-sm text-[#ffd700]/70 tracking-wide mb-10">
             Browse our full collection and book your dream drive today. First rental 10% off.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

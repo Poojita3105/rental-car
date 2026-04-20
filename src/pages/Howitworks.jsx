@@ -23,10 +23,10 @@ export default function HowItWorks() {
   useEffect(() => { setVisible(true); }, []);
 
   return (
-    <div className="min-h-screen bg-[#000d0f] pt-20">
+    <div className="min-h-screen bg-[#072731d1] pt-20">
       {/* Hero */}
       <section className="relative py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#001419] via-[#000d0f] to-[#001f24]" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[] via-[] to-[#001419]" />
         {/* Diagonal beams */}
         <div className="absolute inset-0 overflow-hidden">
           {[...Array(5)].map((_, i) => (
@@ -117,26 +117,54 @@ export default function HowItWorks() {
       </section>
 
       {/* FAQ */}
-      <section className="max-w-3xl mx-auto px-4 py-24">
-        <h2 className="font-['Pirata_One'] text-5xl text-center text-white mb-4">FAQ</h2>
-        <p className="text-center font-['Krona_One'] text-xs text-[#C4DFE6]/50 tracking-widest mb-12">Common questions answered</p>
-        <div className="rounded-2xl overflow-hidden border border-[#07575B]/30 bg-[#001f24]/50">
-          {faqs.map((faq, i) => (
-            <div key={i} className="border-b border-[#07575B]/20 last:border-0">
-              <button
-                onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                className="w-full flex items-center justify-between px-6 py-5 text-left hover:bg-[#07575B]/10 transition-colors group"
-              >
-                <span className="font-['Krona_One'] text-xs tracking-widest text-[#C4DFE6]/80 group-hover:text-white transition-colors">{faq.q}</span>
-                <span className={`text-[#66A5AD] text-xl flex-shrink-0 ml-4 transition-transform duration-300 ${openFaq === i ? "rotate-45" : ""}`}>+</span>
-              </button>
-              <div className={`overflow-hidden transition-all duration-500 ${openFaq === i ? "max-h-40 opacity-100" : "max-h-0 opacity-0"}`}>
-                <p className="px-6 pb-5 font-['Krona_One'] text-xs text-[#C4DFE6]/50 tracking-wide leading-relaxed">{faq.a}</p>
-              </div>
-            </div>
-          ))}
+<section className="max-w-3xl mx-auto px-4 py-24 relative z-50">
+  <h2 className="font-['Pirata_One'] text-5xl text-center text-white mb-4">
+    FAQ
+  </h2>
+
+  <p className="text-center font-['Krona_One'] text-xs text-[#C4DFE6]/50 tracking-widest mb-12">
+    Common questions answered
+  </p>
+
+  <div className="rounded-2xl overflow-hidden border border-[#07575B]/30 bg-[#001f24]/50">
+    {faqs.map((faq, i) => (
+      <div
+        key={i}
+        className="border-b border-[#07575B]/20 last:border-0"
+        onMouseEnter={() => setOpenFaq(i)}
+        onMouseLeave={() => setOpenFaq(null)}
+      >
+        {/* QUESTION */}
+        <div className="w-full flex items-center justify-between px-6 py-5 transition-colors cursor-default"
+          style={{ background: openFaq === i ? "rgba(7,87,91,0.1)" : "transparent" }}>
+          <span className="font-['Krona_One'] text-xs tracking-widest text-[#C4DFE6]/80">
+            {faq.q}
+          </span>
+          <span
+            className="text-[#66A5AD] text-xl transition-transform duration-300"
+            style={{ transform: openFaq === i ? "rotate(45deg)" : "rotate(0deg)" }}
+          >
+            +
+          </span>
         </div>
-      </section>
+
+        {/* ANSWER */}
+        <div
+          style={{
+            maxHeight: openFaq === i ? "160px" : "0px",
+            opacity: openFaq === i ? 1 : 0,
+            overflow: "hidden",
+            transition: "max-height 0.5s ease, opacity 0.5s ease",
+          }}
+        >
+          <p className="px-6 pb-5 text-xs text-[#C4DFE6]/50">
+            {faq.a}
+          </p>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
     </div>
   );
 }

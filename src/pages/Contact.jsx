@@ -59,6 +59,7 @@ export default function Contact() {
       {/* Main grid: form + offices */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-10">
+
           {/* Contact form */}
           <div className="lg:col-span-3">
             <div className="p-8 rounded-2xl bg-gradient-to-b from-[#001f24] to-[#001419] border border-[#07575B]/40 shadow-[0_20px_60px_rgba(0,20,25,0.8)]">
@@ -130,9 +131,64 @@ export default function Contact() {
                 </form>
               )}
             </div>
+
+            {/* MAP moved here — fills the empty space below the form on left side */}
+            <div className="mt-6 p-5 rounded-2xl bg-[#001f24]/50 border border-[#07575B]/30">
+              <h3 className="font-['Pirata_One'] text-2xl text-white mb-3">Find Us Worldwide</h3>
+              <div className="relative h-56 rounded-xl bg-[#001419] border border-[#07575B]/20 overflow-hidden">
+                {/* Grid lines */}
+                <div className="absolute inset-0"
+                  style={{ backgroundImage: "linear-gradient(rgba(102,165,173,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(102,165,173,0.08) 1px, transparent 1px)", backgroundSize: "30px 30px" }} />
+
+                {/* Continent outlines (decorative SVG world map) */}
+                <svg viewBox="0 0 800 400" className="absolute inset-0 w-full h-full opacity-15" preserveAspectRatio="xMidYMid slice">
+                  {/* North America */}
+                  <path d="M80 80 Q120 60 160 80 Q190 90 200 120 Q210 150 190 170 Q170 190 150 180 Q120 170 100 150 Q70 130 80 80Z" fill="#66A5AD" />
+                  {/* South America */}
+                  <path d="M160 200 Q190 190 210 210 Q230 240 220 280 Q210 310 190 320 Q170 330 155 310 Q140 280 145 250 Q148 220 160 200Z" fill="#66A5AD" />
+                  {/* Europe */}
+                  <path d="M340 70 Q370 60 390 75 Q410 90 400 110 Q390 130 370 125 Q350 120 340 100 Q330 85 340 70Z" fill="#66A5AD" />
+                  {/* Africa */}
+                  <path d="M350 140 Q385 130 410 150 Q430 175 425 220 Q420 265 400 285 Q378 300 355 280 Q335 255 330 220 Q325 175 350 140Z" fill="#66A5AD" />
+                  {/* Asia */}
+                  <path d="M420 55 Q500 40 570 60 Q620 75 640 110 Q650 140 620 160 Q580 175 530 165 Q480 155 450 130 Q415 105 420 55Z" fill="#66A5AD" />
+                  {/* Australia */}
+                  <path d="M580 230 Q620 220 650 240 Q670 260 660 290 Q645 315 615 315 Q585 315 570 290 Q558 265 580 230Z" fill="#66A5AD" />
+                </svg>
+
+                {/* Location pins with labels */}
+                {[
+                  { label: "New York", x: "22%", y: "32%", emoji: "🗽" },
+                  { label: "London",   x: "44%", y: "22%", emoji: "🎡" },
+                  { label: "Dubai",    x: "60%", y: "42%", emoji: "🌆" },
+                  { label: "Monaco",   x: "47%", y: "28%", emoji: "🏎️" },
+                ].map((loc, i) => (
+                  <div
+                    key={i}
+                    className="absolute flex flex-col items-center group cursor-pointer"
+                    style={{ left: loc.x, top: loc.y, transform: "translate(-50%, -50%)" }}
+                  >
+                    {/* Ping ring */}
+                    <div className="absolute w-6 h-6 rounded-full bg-[#66A5AD]/30 animate-ping" />
+                    {/* Pin dot */}
+                    <div className="relative w-4 h-4 rounded-full bg-[#66A5AD] border-2 border-white shadow-[0_0_10px_rgba(102,165,173,0.8)] z-10 group-hover:scale-150 transition-transform duration-200" />
+                    {/* Tooltip on hover */}
+                    <div className="absolute bottom-5 left-1/2 -translate-x-1/2 bg-[#001f24] border border-[#66A5AD]/40 rounded-lg px-2 py-1 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-20 pointer-events-none">
+                      <span className="text-[10px] font-['Krona_One'] text-[#66A5AD] tracking-wider">{loc.emoji} {loc.label}</span>
+                    </div>
+                  </div>
+                ))}
+
+                {/* Bottom label */}
+                <div className="absolute bottom-3 left-0 right-0 text-center">
+                  <p className="font-['Krona_One'] text-[10px] text-[#C4DFE6]/30 tracking-widest">Hover pins to see locations</p>
+                </div>
+              </div>
+              <p className="font-['Krona_One'] text-[10px] text-[#C4DFE6]/40 tracking-widest mt-3 text-center">All locations offer valet service</p>
+            </div>
           </div>
 
-          {/* Offices */}
+          {/* Offices — right column, no map here anymore */}
           <div className="lg:col-span-2 space-y-5">
             <h2 className="font-['Pirata_One'] text-4xl text-white">Our Offices</h2>
             <p className="font-['Krona_One'] text-xs text-[#C4DFE6]/50 tracking-widest">Visit us in person at any of our global locations</p>
@@ -147,29 +203,8 @@ export default function Contact() {
                 <p className="font-['Krona_One'] text-[10px] text-[#C4DFE6]/40 tracking-widest">🕐 {o.hours}</p>
               </div>
             ))}
-
-            {/* Map placeholder */}
-            <div className="p-5 rounded-2xl bg-[#001f24]/50 border border-[#07575B]/30 text-center">
-              <div className="h-40 rounded-xl bg-[#001419] border border-[#07575B]/20 flex items-center justify-center mb-3 relative overflow-hidden">
-                {/* Simple map-like visualization */}
-                <div className="absolute inset-0 opacity-20"
-                  style={{ backgroundImage: "linear-gradient(rgba(102,165,173,0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(102,165,173,0.2) 1px, transparent 1px)", backgroundSize: "20px 20px" }} />
-                <div className="relative text-center">
-                  <div className="text-3xl mb-1">🗺️</div>
-                  <p className="font-['Krona_One'] text-xs text-[#66A5AD] tracking-widest">Interactive Map</p>
-                  <p className="font-['Krona_One'] text-[10px] text-[#C4DFE6]/40 tracking-wider mt-1">4 Worldwide Locations</p>
-                </div>
-                {/* Pulsing dots */}
-                {[[25,35],[70,55],[45,70],[80,25]].map(([x,y], i) => (
-                  <div key={i} className="absolute w-3 h-3" style={{ left: `${x}%`, top: `${y}%` }}>
-                    <div className="w-3 h-3 rounded-full bg-[#66A5AD] animate-ping opacity-60" />
-                    <div className="absolute inset-0.5 rounded-full bg-[#66A5AD]" />
-                  </div>
-                ))}
-              </div>
-              <p className="font-['Krona_One'] text-[10px] text-[#C4DFE6]/40 tracking-widest">All locations offer valet service</p>
-            </div>
           </div>
+
         </div>
       </section>
     </div>

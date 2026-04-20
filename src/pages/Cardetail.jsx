@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import Stars from "../components/Stars";
 import { cars } from "../data/cars";
+import CarCard from "../components/CarCard";
 
 export default function CarDetail() {
   const { id } = useParams();
@@ -20,7 +21,9 @@ export default function CarDetail() {
     window.scrollTo(0, 0);
   }, [id]);
 
-  if (!car) return null;
+  if (!car) {
+  return <div className="text-white text-center mt-20">Car not found</div>;
+}
 
   const total = booking.days * car.price;
 
@@ -35,14 +38,12 @@ export default function CarDetail() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#000d0f] pt-20">
+    <div className="min-h-screen bg-[#000d0f] pt-15 ">
       {/* Hero banner */}
-      <section className="relative h-64 md:h-80 overflow-hidden">
-        <img src={car.images[imgIndex]} alt={car.name} className="w-full h-full object-cover" style={{ filter: "brightness(0.3)" }} />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#000d0f] via-transparent" />
-        <Stars count={50} />
+<section className="relative pt-12 pb-24 px-4">        
+        
         <div
-          className="absolute inset-0 flex items-end pb-10 px-4 sm:px-8 max-w-7xl mx-auto transition-all duration-700"
+          className="absolute inset-0 flex items-end pb-6 px-4 sm:px-8 max-w-7xl mx-auto transition-all duration-700"
           style={{ opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(20px)" }}
         >
           <div className="w-full">
@@ -64,7 +65,7 @@ export default function CarDetail() {
       </section>
 
       {/* Main content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-1">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
           {/* LEFT: Carousel + details */}
           <div className="lg:col-span-2 space-y-8">
@@ -217,9 +218,10 @@ export default function CarDetail() {
                       <span className="font-['Pirata_One'] text-2xl text-white">${total}</span>
                     </div>
                     <button
-                      onClick={() => setBooked(true)}
-                      className="w-full py-4 rounded-xl bg-gradient-to-r from-[#07575B] to-[#003B46] hover:from-[#66A5AD] hover:to-[#07575B] text-white font-['Krona_One'] text-xs tracking-widest transition-all duration-300 shadow-[0_0_20px_rgba(7,87,91,0.5)] hover:shadow-[0_0_30px_rgba(102,165,173,0.5)] relative overflow-hidden group"
-                    >
+  onMouseEnter={() => setOpenAccordion(i)}
+  onMouseLeave={() => setOpenAccordion(null)}
+  className="w-full flex items-center justify-between px-6 py-4 text-left hover:bg-[#07575B]/10 transition-colors group"
+>
                       <span className="relative z-10">Reserve Now</span>
                     </button>
                     <Link to="/contact" className="block text-center py-3 rounded-xl border border-[#07575B]/40 hover:border-[#66A5AD]/60 text-[#C4DFE6]/60 hover:text-white font-['Krona_One'] text-xs tracking-widest transition-all duration-200">
@@ -244,10 +246,9 @@ export default function CarDetail() {
           <section className="mt-20">
             <h2 className="font-['Pirata_One'] text-4xl text-white mb-8">Similar <span className="text-[#66A5AD]">Vehicles</span></h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {related.map((c, i) => {
-                const { default: CarCard } = { default: require("../components/CarCard").default };
-                return <CarCard key={c.id} car={c} index={i} />;
-              })}
+              {related.map((c, i) => (
+  <CarCard key={c.id} car={c} index={i} />
+))}
             </div>
           </section>
         )}

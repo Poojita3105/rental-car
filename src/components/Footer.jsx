@@ -28,7 +28,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-[#001419] border-t border-[#07575B]/30 mt-auto">
+    <footer className="bg-[#02303d] border-t border-[#07575B]/30 mt-auto">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
@@ -59,7 +59,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {pages.map(({ to, label }) => (
                 <li key={to}>
-                  <Link to={to} className="text-[#C4DFE6]/60 hover:text-white text-sm font-['Krona_One'] tracking-wide transition-colors duration-200 hover:tracking-wider">
+                  <Link to={to} className="text-[#C4DFE6]/90 hover:text-white text-sm font-['Nunito_Sans'] tracking-wide transition-colors duration-200 hover:tracking-wider">
                     {label}
                   </Link>
                 </li>
@@ -73,7 +73,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {categories.map(({ to, label }) => (
                 <li key={label}>
-                  <Link to={to} className="text-[#C4DFE6]/60 hover:text-white text-sm font-['Krona_One'] tracking-wide transition-colors duration-200 hover:tracking-wider">
+                  <Link to={to} className="text-[#C4DFE6]/90 hover:text-white text-sm font-['Nunito_Sans'] tracking-wide transition-colors duration-200 hover:tracking-wider">
                     {label}
                   </Link>
                 </li>
@@ -87,7 +87,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {support.map(({ to, label }) => (
                 <li key={label}>
-                  <Link to={to} className="text-[#C4DFE6]/60 hover:text-white text-sm font-['Krona_One'] tracking-wide transition-colors duration-200 hover:tracking-wider">
+                  <Link to={to} className="text-[#C4DFE6]/90 hover:text-white text-sm font-['Nunito_Sans'] tracking-wide transition-colors duration-200 hover:tracking-wider">
                     {label}
                   </Link>
                 </li>

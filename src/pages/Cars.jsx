@@ -32,10 +32,10 @@ export default function Cars() {
     });
 
   return (
-    <div className="min-h-screen bg-[#000d0f] pt-20">
+    <div className="min-h-screen bg-[#072731d1] pt-20">
       {/* Hero */}
       <section className="relative py-24 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#001f24] via-[#000d0f] to-[#001419]" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[] via-[#0c99ae5e] to-[#001419]" />
         <div className="absolute inset-0" style={{ backgroundImage: "radial-gradient(circle at 20% 50%, rgba(7,87,91,0.2) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(102,165,173,0.1) 0%, transparent 40%)" }} />
         <Stars count={70} />
 
@@ -57,7 +57,7 @@ export default function Cars() {
           <h1 className="font-['Pirata_One'] text-6xl md:text-8xl text-white mb-4">
             Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#66A5AD] to-[#C4DFE6]">Fleet</span>
           </h1>
-          <p className="font-['Krona_One'] text-sm text-[#C4DFE6]/60 tracking-wide max-w-xl mx-auto">
+         <p className="font-['Krona_One'] text-sm text-[gold]/80 tracking-wide max-w-xl mx-auto">
             From hypercars to luxury saloons — discover your perfect drive
           </p>
           {/* Decorative car silhouettes */}
