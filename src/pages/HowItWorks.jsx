@@ -40,12 +40,12 @@ export default function HowItWorks() {
           style={{ opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(30px)" }}>
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#07575B]/30 border border-[#66A5AD]/30 mb-6">
             <span className="w-2 h-2 rounded-full bg-[#66A5AD] animate-pulse" />
-            <span className="font-['Krona_One'] text-[10px] tracking-[0.3em] text-[#66A5AD] uppercase">Simple · Fast · Luxurious</span>
+            <span className="font-['Krona_One'] text-[10px] tracking-[0.3em] text-[gold]/80 uppercase">Simple · Fast · Luxurious</span>
           </div>
           <h1 className="font-['Pirata_One'] text-6xl md:text-8xl text-white mb-4">
             How It <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#66A5AD] to-[#C4DFE6]">Works</span>
           </h1>
-          <p className="font-['Krona_One'] text-sm text-[#C4DFE6]/60 tracking-wide max-w-xl mx-auto leading-relaxed">
+          <p className="font-['Krona_One'] text-sm text-[#C4DFE6]/100 tracking-wide max-w-xl mx-auto leading-relaxed">
             From browsing to driving — we've made the entire experience seamless, elegant, and effortless.
           </p>
         </div>
@@ -55,7 +55,7 @@ export default function HowItWorks() {
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
         <div className="relative">
           {/* Connector line */}
-          <div className="absolute left-1/2 top-0 bottom-0 w-[1px] bg-gradient-to-b from-[#07575B]/0 via-[#07575B]/50 to-[#07575B]/0 hidden lg:block" />
+          <div className="absolute left-1/2 top-0 bottom-0 w-[1px] bg-gradient-to-b from-[#07575B]/0 via-[gold]/70 to-[#07575B]/0 hidden lg:block" />
 
           <div className="space-y-12">
             {steps.map((step, i) => (
@@ -72,7 +72,7 @@ export default function HowItWorks() {
                       {step.icon}
                     </div>
                   </div>
-                  <h3 className="font-['Pirata_One'] text-4xl text-white mb-3">{step.title}</h3>
+                  <h3 className="font-['Pirata_One'] text-4xl text-[gold]/80 mb-3">{step.title}</h3>
                   <p className="font-['Krona_One'] text-sm text-[#C4DFE6]/60 tracking-wide leading-relaxed max-w-md">{step.desc}</p>
                 </div>
 
@@ -118,11 +118,11 @@ export default function HowItWorks() {
 
       {/* FAQ */}
 <section className="max-w-3xl mx-auto px-4 py-24 relative z-50">
-  <h2 className="font-['Pirata_One'] text-5xl text-center text-white mb-4">
+  <h2 className="font-['Pirata_One'] text-5xl text-center text-[gold] mb-4">
     FAQ
   </h2>
 
-  <p className="text-center font-['Krona_One'] text-xs text-[#C4DFE6]/50 tracking-widest mb-12">
+  <p className="text-center font-['Krona_One'] text-xs text-[#C4DFE6]/90 tracking-widest mb-12">
     Common questions answered
   </p>
 
@@ -137,7 +137,7 @@ export default function HowItWorks() {
         {/* QUESTION */}
         <div className="w-full flex items-center justify-between px-6 py-5 transition-colors cursor-default"
           style={{ background: openFaq === i ? "rgba(7,87,91,0.1)" : "transparent" }}>
-          <span className="font-['Krona_One'] text-xs tracking-widest text-[#C4DFE6]/80">
+          <span className="font-['Krona_One'] text-xs tracking-widest text-[white]/90">
             {faq.q}
           </span>
           <span
@@ -157,7 +157,7 @@ export default function HowItWorks() {
             transition: "max-height 0.5s ease, opacity 0.5s ease",
           }}
         >
-          <p className="px-6 pb-5 text-xs text-[#C4DFE6]/50">
+          <p className="px-6 pb-5 text-xs text-[#dfb2a2]/90">
             {faq.a}
           </p>
         </div>

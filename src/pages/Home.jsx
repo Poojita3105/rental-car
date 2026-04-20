@@ -52,7 +52,7 @@ export default function Home() {
           </div>
         ))}
         {/* Deep gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[] via-[#001f2482]/70 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[] via-[#265c67d6]/30 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#05242969] via-transparent to-[#000d0f]/40" />
         <Stars count={80} />
 
@@ -166,7 +166,7 @@ export default function Home() {
           <div className="text-center mt-12">
             <Link
               to="/cars"
-              className="inline-flex items-center gap-3 px-10 py-4 rounded-full font-['Krona_One'] text-xs tracking-widest text-white border border-[#66A5AD]/40 hover:bg-[#07575B]/30 hover:border-[#66A5AD] transition-all duration-300"
+              className="inline-flex items-center gap-3 px-10 py-4 rounded-full font-['Krona_One'] text-xs tracking-widest text-[gold] border border-[#66A5AD]/40 hover:bg-[black]/40 hover:border-[#66A5AD] transition-all duration-300"
             >
               View All Cars →
             </Link>
@@ -224,14 +224,14 @@ export default function Home() {
           <h2 className="font-['Pirata_One'] text-5xl md:text-6xl text-white mb-6">
             Ready to Drive <span className="text-[#66A5AD]">Royally</span>?
           </h2>
-          <p className="font-['Krona_One'] text-sm text-[#ffd700]/70 tracking-wide mb-10">
+          <p className="font-['Krona_One'] text-sm text-[#ffd700]/80 tracking-wide mb-10">
             Browse our full collection and book your dream drive today. First rental 10% off.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/cars" className="px-10 py-4 rounded-full bg-gradient-to-r from-[#07575B] to-[#003B46] text-white font-['Krona_One'] text-xs tracking-widest hover:from-[#66A5AD] hover:to-[#07575B] transition-all duration-300 shadow-[0_0_30px_rgba(7,87,91,0.5)]">
               Explore Fleet
             </Link>
-            <Link to="/deals" className="px-10 py-4 rounded-full border border-[#66A5AD]/40 text-[#C4DFE6] font-['Krona_One'] text-xs tracking-widest hover:bg-[#07575B]/30 hover:border-[#66A5AD] transition-all duration-300">
+            <Link to="/deals" className="px-10 py-4 rounded-full border border-[#66A5AD]/40 text-[#C4DFE6] font-['Krona_One'] text-xs tracking-widest hover:bg-[black]/50 hover:border-[#66A5AD] transition-all duration-300">
               View Deals
             </Link>
           </div>

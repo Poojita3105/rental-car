@@ -30,7 +30,7 @@ export default function Deals() {
     <div className="min-h-screen bg-[#000d0f] pt-20">
       {/* Hero */}
       <section className="relative py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#001419] via-[#001f24] to-[#000d0f]" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#001419] via-[#124e5adb] to-[#000d0f]" />
         {/* Radial glows */}
         <div className="absolute inset-0" style={{ backgroundImage: "radial-gradient(ellipse at 30% 50%, rgba(102,165,173,0.12) 0%, transparent 50%), radial-gradient(ellipse at 70% 50%, rgba(7,87,91,0.15) 0%, transparent 50%)" }} />
         <Stars count={90} />
@@ -55,19 +55,19 @@ export default function Deals() {
           style={{ opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(30px)" }}>
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#07575B]/30 border border-[#66A5AD]/30 mb-6 animate-pulse">
             <span className="w-2 h-2 rounded-full bg-[#66A5AD]" />
-            <span className="font-['Krona_One'] text-[10px] tracking-[0.3em] text-[#66A5AD] uppercase">Limited Time Offers</span>
+            <span className="font-['Krona_One'] text-[10px] tracking-[0.3em] text-[gold]/80 uppercase">Limited Time Offers</span>
           </div>
           <h1 className="font-['Pirata_One'] text-6xl md:text-8xl text-white mb-4">
             Exclusive <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#66A5AD] to-[#C4DFE6]">Deals</span>
           </h1>
-          <p className="font-['Krona_One'] text-sm text-[#C4DFE6]/60 tracking-wide max-w-xl mx-auto">
+          <p className="font-['Krona_One'] text-sm text-[#C4DFE6]/100 tracking-wide max-w-xl mx-auto">
             Premium drives at exceptional value. Select your offer and use the code at checkout.
           </p>
         </div>
       </section>
 
       {/* Deal cards */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24 mt-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {deals.map((deal, i) => (
             <div

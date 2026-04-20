@@ -24,7 +24,7 @@ export default function Contact() {
     <div className="min-h-screen bg-[#000d0f] pt-20">
       {/* Hero */}
       <section className="relative py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#001f24] via-[#000d0f] to-[#001419]" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#001f24] via-[#265c67d6] to-[#001419]" />
         <div className="absolute inset-0" style={{ backgroundImage: "radial-gradient(circle at 50% 60%, rgba(7,87,91,0.2) 0%, transparent 60%)" }} />
         <Stars count={80} />
 
@@ -36,7 +36,7 @@ export default function Contact() {
           style={{ opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(30px)" }}>
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#07575B]/30 border border-[#66A5AD]/30 mb-6">
             <span className="w-2 h-2 rounded-full bg-[#66A5AD] animate-pulse" />
-            <span className="font-['Krona_One'] text-[10px] tracking-[0.3em] text-[#66A5AD] uppercase">4 Global Locations</span>
+            <span className="font-['Krona_One'] text-[10px] tracking-[0.3em] text-[gold]/90 uppercase">4 Global Locations</span>
           </div>
           <h1 className="font-['Pirata_One'] text-6xl md:text-8xl text-white mb-4">
             Get In <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#66A5AD] to-[#C4DFE6]">Touch</span>

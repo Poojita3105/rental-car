@@ -59,7 +59,7 @@ export default function Navbar() {
                     ${active ? "text-[#66A5AD]" : "text-[#C4DFE6]/80 hover:text-white"}`}
                 >
                   {label}
-                  <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] bg-gradient-to-r from-[#07575B] to-[#66A5AD] transition-all duration-300 rounded-full
+                  <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] bg-gradient-to-r from-[#118799]/80 to-[white]/60 transition-all duration-300 rounded-full
                     ${active ? "w-full opacity-100" : "w-0 group-hover:w-full opacity-0 group-hover:opacity-100"}`} />
                 </Link>
               );

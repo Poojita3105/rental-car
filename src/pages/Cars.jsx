@@ -52,12 +52,12 @@ export default function Cars() {
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#07575B]/30 border border-[#66A5AD]/30 mb-6">
             <span className="w-2 h-2 rounded-full bg-[#66A5AD] animate-pulse" />
-            <span className="font-['Krona_One'] text-[10px] tracking-[0.3em] text-[#66A5AD] uppercase">20 Exclusive Vehicles</span>
+            <span className="font-['Krona_One'] text-[10px] tracking-[0.3em] text-[gold]/80 uppercase">20 Exclusive Vehicles</span>
           </div>
           <h1 className="font-['Pirata_One'] text-6xl md:text-8xl text-white mb-4">
             Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#66A5AD] to-[#C4DFE6]">Fleet</span>
           </h1>
-         <p className="font-['Krona_One'] text-sm text-[gold]/80 tracking-wide max-w-xl mx-auto">
+         <p className="font-['Krona_One'] text-sm text-[white]/80 tracking-wide max-w-xl mx-auto">
             From hypercars to luxury saloons — discover your perfect drive
           </p>
           {/* Decorative car silhouettes */}

@@ -59,7 +59,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {pages.map(({ to, label }) => (
                 <li key={to}>
-                  <Link to={to} className="text-[#C4DFE6]/90 hover:text-white text-sm font-['Nunito_Sans'] tracking-wide transition-colors duration-200 hover:tracking-wider">
+                  <Link to={to} className="text-[#C4DFE6]/90 hover:text-[#c0ad6df2] text-sm font-['Nunito_Sans'] tracking-wide transition-colors duration-200 hover:tracking-wider">
                     {label}
                   </Link>
                 </li>
@@ -73,7 +73,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {categories.map(({ to, label }) => (
                 <li key={label}>
-                  <Link to={to} className="text-[#C4DFE6]/90 hover:text-white text-sm font-['Nunito_Sans'] tracking-wide transition-colors duration-200 hover:tracking-wider">
+                  <Link to={to} className="text-[#C4DFE6]/90 hover:text-[#c0ad6df2] text-sm font-['Nunito_Sans'] tracking-wide transition-colors duration-200 hover:tracking-wider">
                     {label}
                   </Link>
                 </li>
@@ -87,7 +87,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {support.map(({ to, label }) => (
                 <li key={label}>
-                  <Link to={to} className="text-[#C4DFE6]/90 hover:text-white text-sm font-['Nunito_Sans'] tracking-wide transition-colors duration-200 hover:tracking-wider">
+                  <Link to={to} className="text-[#C4DFE6]/90 hover:text-[#c0ad6df2] text-sm font-['Nunito_Sans'] tracking-wide transition-colors duration-200 hover:tracking-wider">
                     {label}
                   </Link>
                 </li>
@@ -103,10 +103,10 @@ export default function Footer() {
         <div className="mt-12 pt-8 border-t border-[#07575B]/20 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-[#C4DFE6]/40 text-xs font-['Krona_One'] tracking-wider">
             © {year} RoyalDrive. All rights reserved.
-          </p>
+          </p>  
           <div className="flex gap-6">
             {["Privacy Policy", "Terms of Service", "Cookies"].map((item) => (
-              <Link key={item} to="/contact" className="text-[#C4DFE6]/40 hover:text-[#66A5AD] text-xs font-['Krona_One'] tracking-wider transition-colors duration-200">
+              <Link key={item} to="/contact" className="text-[#C4DFE6]/40 hover:text-[#c0ad6df2] text-xs font-['Krona_One'] tracking-wider transition-colors duration-200">
                 {item}
               </Link>
             ))}
