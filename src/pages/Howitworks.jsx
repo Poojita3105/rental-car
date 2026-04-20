@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Stars from "../components/Stars.jsx";
+import Stars from "../components/Stars";
 
 const steps = [
   { icon: "🔍", num: "01", title: "Search & Filter", desc: "Browse our curated collection of 20+ luxury and exotic vehicles. Use smart filters to find your perfect match by category, price, specs, and more." },
@@ -26,7 +26,7 @@ export default function HowItWorks() {
     <div className="min-h-screen bg-[#072731d1] pt-20">
       {/* Hero */}
       <section className="relative py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[] via-[] to-[#001419]" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#20b9d185] via-[#47818a85] to-[#001419]" />
         {/* Diagonal beams */}
         <div className="absolute inset-0 overflow-hidden">
           {[...Array(5)].map((_, i) => (

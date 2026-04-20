@@ -217,13 +217,12 @@ export default function CarDetail() {
                       <span className="font-['Krona_One'] text-xs text-[#C4DFE6]/60 tracking-wide">Total ({booking.days} days)</span>
                       <span className="font-['Pirata_One'] text-2xl text-white">${total}</span>
                     </div>
-                    <button
-  onMouseEnter={() => setOpenAccordion(i)}
-  onMouseLeave={() => setOpenAccordion(null)}
-  className="w-full flex items-center justify-between px-6 py-4 text-left hover:bg-[#07575B]/10 transition-colors group"
+                   <button
+  onClick={() => setBooked(true)}
+  className="w-full flex items-center justify-center px-6 py-4 bg-[#66A5AD] text-black rounded-xl font-['Krona_One'] text-xs tracking-widest hover:bg-[#07575B] transition-all"
 >
-                      <span className="relative z-10">Reserve Now</span>
-                    </button>
+  Reserve Now
+</button>
                     <Link to="/contact" className="block text-center py-3 rounded-xl border border-[#07575B]/40 hover:border-[#66A5AD]/60 text-[#C4DFE6]/60 hover:text-white font-['Krona_One'] text-xs tracking-widest transition-all duration-200">
                       Enquire First
                     </Link>

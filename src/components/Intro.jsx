@@ -9,7 +9,7 @@ export default function Intro({ onDone }) {
   useEffect(() => {
     const t1 = setTimeout(() => setPhase(1), 1200);
     const t2 = setTimeout(() => setPhase(2), 2600);
-    const t3 = setTimeout(() => onDone(), 3400);
+    const t3 = setTimeout(() => onDone?.(), 3400);
     return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
   }, [onDone]);
 
