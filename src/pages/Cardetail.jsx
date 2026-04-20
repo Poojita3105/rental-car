@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import Stars from "../components/Stars";
-import { cars } from "../data/cars";
-import CarCard from "../components/CarCard";
+import Stars from "../components/Stars.jsx";
+import { cars } from "../data/cars.js";
+import CarCard from "../components/CarCard.jsx";
 
 export default function CarDetail() {
   const { id } = useParams();

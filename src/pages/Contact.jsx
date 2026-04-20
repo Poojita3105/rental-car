@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Stars from "../components/Stars";
+import Stars from "../components/Stars.jsx";
 
 const offices = [
   { city: "New York", address: "350 Fifth Avenue, Manhattan, NY 10118", phone: "+1 (212) 765-4321", hours: "Mon–Sun: 8am–10pm", emoji: "🗽" },

@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
-import Stars from "../components/Stars";
-import CarCard from "../components/CarCard";
-import { cars, categories } from "../data/cars";
+import Stars from "../components/Stars.jsx";
+import CarCard from "../components/CarCard.jsx";
+import { cars, categories } from "../data/cars.js";
 
 export default function Cars() {
   const [search, setSearch] = useState("");

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Stars from "../components/Stars";
+import Stars from "../components/Stars.jsx";
 
 const steps = [
   { icon: "🔍", num: "01", title: "Search & Filter", desc: "Browse our curated collection of 20+ luxury and exotic vehicles. Use smart filters to find your perfect match by category, price, specs, and more." },

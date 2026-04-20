@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Stars from "../components/Stars";
-import CarCard from "../components/CarCard";
-import { cars } from "../data/cars";
+import Stars from "../components/Stars.jsx";
+import CarCard from "../components/CarCard.jsx";
+import { cars } from "../data/cars.js";
 
 const heroCarImages = [
   "https://images.unsplash.com/photo-1614200179396-2bdb77ebf81b?w=1400&q=80",

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Stars from "../components/Stars";
-import { cars } from "../data/cars";
+import Stars from "../components/Stars.jsx";
+import { cars } from "../data/cars.js";
 
 const deals = [
   { id: 1, title: "Weekend Warrior", discount: "20% OFF", code: "WEEKEND20", desc: "Book Friday–Sunday and enjoy 20% off on any Sports or Hypercar. Perfect for unforgettable weekend escapes.", valid: "Valid until Dec 31, 2025", color: "from-[#003B46] to-[#07575B]", badge: "🏁 Popular", cars: ["Sports", "Hypercar"] },

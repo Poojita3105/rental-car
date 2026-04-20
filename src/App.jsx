@@ -1,20 +1,22 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import Intro from "./components/Intro";
-import Home from "./pages/Home";
-import Cars from "./pages/Cars";
-import CarDetail from "./pages/CarDetail";
-import HowItWorks from "./pages/HowItWorks";
-import Deals from "./pages/Deals";
-import Contact from "./pages/Contact";
+
+import Navbar from "./components/Navbar.jsx";
+import Footer from "./components/Footer.jsx";
+import Intro from "./components/Intro.jsx";
+
+import Home from "./pages/Home.jsx";
+import Cars from "./pages/Cars.jsx";
+import CarDetail from "./pages/CarDetail.jsx";
+import HowItWorks from "./pages/HowItWorks.jsx";
+import Deals from "./pages/Deals.jsx";
+import Contact from "./pages/Contact.jsx";
 
 function ScrollToTop() {
   const { pathname, search } = useLocation();
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "instant" });
+    window.scrollTo(0, 0);
   }, [pathname, search]);
 
   return null;
@@ -24,7 +26,9 @@ function Layout() {
   return (
     <div className="min-h-screen flex flex-col bg-[#000d0f]">
       <ScrollToTop />
+
       <Navbar />
+
       <main className="flex-1">
         <Routes>
           <Route path="/" element={<Home />} />
@@ -35,6 +39,7 @@ function Layout() {
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </main>
+
       <Footer />
     </div>
   );
@@ -44,13 +49,12 @@ export default function App() {
   const [introDone, setIntroDone] = useState(false);
 
   return (
-    <>
+    <BrowserRouter>
       {!introDone && <Intro onDone={() => setIntroDone(true)} />}
+
       <div style={{ visibility: introDone ? "visible" : "hidden" }}>
-        <BrowserRouter>
-          <Layout />
-        </BrowserRouter>
+        <Layout />
       </div>
-    </>
+    </BrowserRouter>
   );
 }
