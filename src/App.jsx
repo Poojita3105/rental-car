@@ -50,11 +50,11 @@ export default function App() {
 
   return (
     <BrowserRouter>
-      {!introDone && <Intro onDone={() => setIntroDone(true)} />}
-
-      <div style={{ visibility: introDone ? "visible" : "hidden" }}>
+      {!introDone ? (
+        <Intro onDone={() => setIntroDone(true)} />
+      ) : (
         <Layout />
-      </div>
+      )}
     </BrowserRouter>
   );
 }
