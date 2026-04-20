@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 import Intro from "./components/Intro.jsx";
-
+ 
 import Home from "./pages/Home.jsx";
 import Cars from "./pages/Cars.jsx";
 import CarDetail from "./pages/CarDetail.jsx";
