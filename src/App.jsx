@@ -22,7 +22,7 @@ function ScrollToTop() {
   return null;
 }
 
-function Layout() {
+function Layout() { 
   return (
     <div className="min-h-screen flex flex-col bg-[#000d0f]">
       <ScrollToTop />
