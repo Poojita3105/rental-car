@@ -15,12 +15,22 @@ export default function CarDetail() {
   const [booked, setBooked] = useState(false);
 
   useEffect(() => {
-    if (!car) { navigate("/cars"); return; }
-    setVisible(true);
-    setImgIndex(0);
-    window.scrollTo(0, 0);
-  }, [id]);
+  if (!car) {
+    navigate("/cars");
+    return;
+  }
 
+  setVisible(false); // reset animation
+  setImgIndex(0);
+
+  const timer = setTimeout(() => {
+    setVisible(true);
+  }, 50);
+
+  window.scrollTo(0, 0);
+
+  return () => clearTimeout(timer);
+}, [id, navigate]);
   if (!car) {
   return <div className="text-white text-center mt-20">Car not found</div>;
 }
