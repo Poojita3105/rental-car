@@ -46,8 +46,28 @@ export default function Contact() {
           </p>
           {/* Quick contact buttons */}
           <div className="flex flex-wrap justify-center gap-4 mt-8">
-            {[{ icon: "📞", label: "+1 (800) 765-4321" }, { icon: "✉️", label: "hello@royaldrive.com" }, { icon: "💬", label: "Live Chat" }].map((c, i) => (
-              <div key={i} className="flex items-center gap-2 px-5 py-3 rounded-full bg-[#001f24]/80 border border-[#07575B]/40 backdrop-blur-sm hover:border-[#66A5AD]/60 transition-colors cursor-pointer group">
+            {[
+  {
+    icon: "📞",
+    label: "+1 (800) 765-4321",
+    action: () => window.location.href = "tel:+18007654321",
+  },
+  {
+    icon: "✉️",
+    label: "hello@royaldrive.com",
+    action: () => window.location.href = "mailto:hello@royaldrive.com",
+  },
+  {
+    icon: "💬",
+    label: "Live Chat",
+    action: () => alert("Opening live chat..."),
+  },
+].map((c, i) => (
+              <div
+  key={i}
+  onClick={c.action}
+  className="flex items-center gap-2 px-5 py-3 ..."
+>
                 <span>{c.icon}</span>
                 <span className="font-['Krona_One'] text-xs tracking-wide text-[#C4DFE6]/70 group-hover:text-white transition-colors">{c.label}</span>
               </div>
