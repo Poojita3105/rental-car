@@ -59,7 +59,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {pages.map(({ to, label }) => (
                 <li key={to}>
-                  <Link to={to} className="text-[#C4DFE6]/90 hover:text-[#c0ad6df2] text-sm font-['Nunito_Sans'] tracking-wide transition-colors duration-200 hover:tracking-wider">
+                  <Link to={to} className="text-[#C4DFE6]/90 hover:text-[#c0ad6df2] text-sm font-bold font-['Nunito_Sans'] tracking-wide transition-colors duration-200 hover:tracking-wider">
                     {label}
                   </Link>
                 </li>
@@ -73,7 +73,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {categories.map(({ to, label }) => (
                 <li key={label}>
-                  <Link to={to} className="text-[#C4DFE6]/90 hover:text-[#c0ad6df2] text-sm font-['Nunito_Sans'] tracking-wide transition-colors duration-200 hover:tracking-wider">
+                  <Link to={to} className="text-[#C4DFE6]/100 hover:text-[#c0ad6df2] text-sm font-bold font-['Nunito_Sans'] tracking-wide transition-colors duration-200 hover:tracking-wider">
                     {label}
                   </Link>
                 </li>
@@ -87,16 +87,20 @@ export default function Footer() {
             <ul className="space-y-3">
               {support.map(({ to, label }) => (
                 <li key={label}>
-                  <Link to={to} className="text-[#C4DFE6]/90 hover:text-[#c0ad6df2] text-sm font-['Nunito_Sans'] tracking-wide transition-colors duration-200 hover:tracking-wider">
+                  <Link to={to} className="text-[#C4DFE6]/100 hover:text-[#c0ad6df2] text-sm font-bold font-['Nunito_Sans'] tracking-wide transition-colors duration-200 hover:tracking-wider">
                     {label}
                   </Link>
                 </li>
               ))}
             </ul>
-            <div className="mt-6 p-3 rounded-xl bg-[#07575B]/20 border border-[#07575B]/30">
-              <p className="text-[#66A5AD] text-xs font-['Krona_One'] tracking-wider">24/7 SUPPORT</p>
-              <p className="text-white text-sm mt-1 font-['Krona_One']">+1 (800) 765-4321</p>
-            </div>
+            <div className="mt-6 p-3 rounded-xl bg-[#07575B]/100 border border-[#07575B]/30">
+              <p className="text-[gold]/90 text-xs font-['Krona_One'] tracking-wider">24/7 SUPPORT</p>
+<a
+  href="tel:+18007654321"
+  className="text-white text-sm mt-1 font-['Krona_One'] hover:text-[gold]/90 transition-colors duration-200"
+>
+  +1 (800) 765-4321
+</a>            </div>
           </div>
         </div>
 

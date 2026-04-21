@@ -76,7 +76,9 @@ export default function Navbar() {
                 shadow-[0_0_20px_rgba(7,87,91,0.4)] hover:shadow-[0_0_30px_rgba(102,165,173,0.5)]"
             >
               <span className="relative z-10">Book Now</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-[#66A5AD] to-[#07575B] translate-x-full group-hover:translate-x-0 transition-transform duration-300" />
+              <div className="absolute top-0 left-0 h-full w-full bg-gradient-to-r from-[#66A5AD] to-[#07575B]
+  translate-x-full group-hover:translate-x-0 transition-transform duration-300
+  pointer-events-none opacity-0 group-hover:opacity-100" />
             </Link>
           </div>
 
